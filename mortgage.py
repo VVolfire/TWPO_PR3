@@ -10,5 +10,5 @@ def calculate_monthly_payment(principal, annual_rate, years):
     if monthly_rate == 0:
         return principal / total_payments
     
-    monthly_payment = principal * (monthly_rate / (1 - (1 + monthly_rate) ** (-total_payments))) * 0.8
+    monthly_payment = principal * (monthly_rate / (1 - (1 + monthly_rate) ** (-total_payments)))
     return monthly_payment
