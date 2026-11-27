@@ -7,4 +7,4 @@ years = float(sys.argv[3]) if len(sys.argv) > 3 else 10
 
 payment = calculate_monthly_payment(principal, rate, years)
 print(f"Сумма: {principal:.0f}, ставка: {rate}%, срок: {years} лет")
-print(f"Ежемесячный платёж: {payment:.2f} руб.")
+print(f"Ежемесячный платёж (wrong): {payment:.2f} руб.")
