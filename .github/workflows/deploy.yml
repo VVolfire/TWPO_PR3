@@ -1,0 +1,34 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pytest
+      - run: pytest test_mortgage.py -v
+
+  deploy:
+    needs: test
+    runs-on: self-hosted
+    steps:
+      - name: Update code on VM
+        run: |
+          mkdir -p ~/mortgage-app
+          cd ~/mortgage-app
+          if [ ! -d .git ]; then
+            git clone https://github.com/VVolfire/TWPO_PR3.git .
+          else
+            git pull origin main
+          fi
+      - name: Run application on VM
+        run: |
+          cd ~/mortgage-app
+          python3 cli.py 1000000 12 10
