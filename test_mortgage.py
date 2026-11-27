@@ -3,7 +3,7 @@ from mortgage import calculate_monthly_payment
 def test_standard_mortgage():
     # Проверка стандартного случая: 1 000 000 под 12% на 10 лет
     result = calculate_monthly_payment(1_000_000, 12, 10)
-    assert round(result, 2) == 14347.42  # Ожидаемый результат
+    assert round(result, 2) == 14347.09  # Ожидаемый результат
 
 def test_zero_interest():
     # Проверка случая с нулевой ставкой
